@@ -1,4 +1,7 @@
-{"migrations": [
-  "0001_namespaces.sql",
-  "0002_migration_history.json"
-]}
+{
+  "migrations": [
+    "0001_namespaces.sql",
+    "0002_migration_history.json",
+    "0003_organization.json"
+  ]
+}
