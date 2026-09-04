@@ -1,0 +1,15 @@
+{
+  "description": "Reject task dependency cycles and audit remaining Wave 1 relationship tables.",
+  "statements": [
+    "CREATE FUNCTION operations.check_task_dependency_cycle() RETURNS trigger LANGUAGE plpgsql AS $$\nDECLARE cycle_found boolean; old_task uuid; old_dependency uuid;\nBEGIN\n IF current_setting('transaction_isolation') <> 'read committed' THEN RAISE EXCEPTION 'DEPENDENCY_WRITE_REQUIRES_READ_COMMITTED'; END IF;\n IF TG_OP='UPDATE' THEN\n  IF NEW.business_id IS DISTINCT FROM OLD.business_id THEN RAISE EXCEPTION 'IMMUTABLE_BUSINESS'; END IF;\n  old_task:=OLD.task_id; old_dependency:=OLD.depends_on_id;\n END IF;\n PERFORM 1 FROM core.business WHERE id=NEW.business_id FOR UPDATE;\n WITH RECURSIVE reachable(id) AS (\n  SELECT NEW.depends_on_id\n  UNION\n  SELECT dep.depends_on_id FROM operations.task_dependency dep JOIN reachable r ON dep.task_id=r.id\n   WHERE dep.business_id=NEW.business_id AND NOT (dep.task_id IS NOT DISTINCT FROM old_task AND dep.depends_on_id IS NOT DISTINCT FROM old_dependency)\n ) SELECT EXISTS(SELECT 1 FROM reachable WHERE id=NEW.task_id) INTO cycle_found;\n IF cycle_found THEN RAISE EXCEPTION USING ERRCODE='23514',MESSAGE='TASK_DEPENDENCY_CYCLE'; END IF;\n RETURN NEW;\nEND $$",
+    "CREATE TRIGGER task_dependency_acyclic BEFORE INSERT OR UPDATE ON operations.task_dependency FOR EACH ROW EXECUTE FUNCTION operations.check_task_dependency_cycle()",
+    "CREATE TRIGGER relationship_history AFTER INSERT OR UPDATE OR DELETE ON operations.task_dependency FOR EACH ROW EXECUTE FUNCTION audit.record_organization_relationship()",
+    "CREATE TRIGGER relationship_no_truncate BEFORE TRUNCATE ON operations.task_dependency FOR EACH STATEMENT EXECUTE FUNCTION audit.reject_organization_truncate()",
+    "CREATE TRIGGER relationship_history AFTER INSERT OR UPDATE OR DELETE ON operations.event_workflow_run FOR EACH ROW EXECUTE FUNCTION audit.record_organization_relationship()",
+    "CREATE TRIGGER relationship_no_truncate BEFORE TRUNCATE ON operations.event_workflow_run FOR EACH STATEMENT EXECUTE FUNCTION audit.reject_organization_truncate()",
+    "CREATE TRIGGER relationship_history AFTER INSERT OR UPDATE OR DELETE ON governance.decision_option FOR EACH ROW EXECUTE FUNCTION audit.record_organization_relationship()",
+    "CREATE TRIGGER relationship_no_truncate BEFORE TRUNCATE ON governance.decision_option FOR EACH STATEMENT EXECUTE FUNCTION audit.reject_organization_truncate()",
+    "CREATE TRIGGER relationship_history AFTER INSERT OR UPDATE OR DELETE ON governance.change_request_test FOR EACH ROW EXECUTE FUNCTION audit.record_organization_relationship()",
+    "CREATE TRIGGER relationship_no_truncate BEFORE TRUNCATE ON governance.change_request_test FOR EACH STATEMENT EXECUTE FUNCTION audit.reject_organization_truncate()"
+  ]
+}
