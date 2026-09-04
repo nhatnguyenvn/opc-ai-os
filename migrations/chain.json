@@ -5,6 +5,7 @@
     "0003_organization.json",
     "0004_organization_hardening.json",
     "0005_governance.json",
-    "0006_governance_support.json"
+    "0006_governance_support.json",
+    "0007_workflow_core.json"
   ]
 }
