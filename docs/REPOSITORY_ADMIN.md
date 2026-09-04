@@ -1,7 +1,7 @@
-# Repository administration — pending
+# Repository administration
 
-Founder is the accountable repository owner. The connected GitHub profile is nhatnguyenvn. No remote repository or visibility has been verified. Both GitHub CLI and the in-app browser require login for repository creation; the connector does not expose repository creation or branch-protection administration.
+Founder is the accountable repository owner, nhatnguyenvn. The private remote https://github.com/nhatnguyenvn/opc-ai-os and default main branch were verified during remote setup. Draft PR #1 contains the foundation branch. Main remains at its bootstrap commit until review and authorized merge.
 
-Create private opc-ai-os in the chosen account. Set main as default after an authorized bootstrap commit. Use feature branches and PRs. Protect main: PR required, required check `foundation`, resolve conversations, prohibit force push and deletion. Apply protection to any later production branch. Require Founder review for governance. Configure CODEOWNERS with the actual verified account; do not use a fictional handle.
+Use feature branches and PRs, passing `foundation` CI, resolved review conversations and Founder review for governance. Do not force push or delete main. CODEOWNERS records ownership; it does not establish enforced approval on this Free private repository.
 
-Verify privacy/default branch/protection with the hosting service, push the feature branch, run hosted CI and test a clean remote clone before closing A1.1/A1.3. Local Git settings cannot enforce hosted protection.
+Native protection configuration is explicitly skipped by user instruction because of GitHub Free private-repository limitations. See PHASE-A-HANDOFF.md. This is an accepted execution exception, not a native-protection PASS. Local procedures cannot enforce hosted protection. If platform support changes later, review protection requirements before configuring them; do not reopen the Web configuration during this continuation.

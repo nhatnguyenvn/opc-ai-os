@@ -1,5 +1,7 @@
 # Phase A foundation acceptance — 2026-09-04
 
+Historical local snapshot: current remote evidence and the user-authorized A1.3 exception are recorded in docs/PHASE-A-HANDOFF.md. Authentication and native-protection blockers below describe the earlier snapshot, not the current continuation state.
+
 Status: LOCAL_FOUNDATION_VERIFIED; PHASE A NOT COMPLETE; NOT RELEASED.
 
 ## Deliverables

@@ -10,3 +10,5 @@
 8. Founder/governance owner reviews authority changes. Do not infer approval from tool access or previous approvals.
 
 See docs/CHANGE_CONTROL.md and docs/REPOSITORY_ADMIN.md. No deployment is included in foundation CI.
+
+Version changes follow docs/VERSIONING.md. The current native branch-protection exception and residual risk are recorded in docs/PHASE-A-HANDOFF.md; PR and CI procedures still apply.
