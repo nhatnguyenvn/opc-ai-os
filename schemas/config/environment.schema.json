@@ -1,0 +1,49 @@
+{
+  "type": "object",
+  "required": [
+    "id",
+    "version",
+    "environment",
+    "database_reference",
+    "connector_reference",
+    "execution_enabled",
+    "production_action_guard",
+    "release_state"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9-]+$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(?:-[0-9A-Za-z.-]+)?$"
+    },
+    "environment": {
+      "enum": [
+        "development",
+        "test",
+        "staging",
+        "production"
+      ]
+    },
+    "database_reference": {
+      "type": "string",
+      "minLength": 1
+    },
+    "connector_reference": {
+      "type": "string",
+      "minLength": 1
+    },
+    "execution_enabled": {
+      "const": false
+    },
+    "production_action_guard": {
+      "const": true
+    },
+    "release_state": {
+      "const": "NOT_DEPLOYED"
+    }
+  },
+  "additionalProperties": false
+}

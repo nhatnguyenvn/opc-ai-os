@@ -1,0 +1,3 @@
+# Domain responsibilities are documented in config/ownership.json.
+# Hosted enforcement requires branch protection; this file alone does not enforce review.
+* @nhatnguyenvn

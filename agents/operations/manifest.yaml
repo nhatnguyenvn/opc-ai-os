@@ -1,0 +1,12 @@
+{
+  "version": "1.0.0",
+  "status": "CONFIGURED_NOT_DEPLOYED",
+  "id": "AGENT-OPERATIONS-001",
+  "name": "Operations & Workflow",
+  "domain": "operations",
+  "requires_runtime": "1.0.0",
+  "permission_profile_id": "PERM-OPERATIONS-001",
+  "domain_control_registry": "agents/operations/domain-controls.yaml",
+  "supported_workflow_classes": [],
+  "output_contract": "agents/operations/outputs.yaml"
+}

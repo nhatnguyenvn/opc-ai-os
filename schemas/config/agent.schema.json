@@ -1,0 +1,68 @@
+{
+  "type": "object",
+  "required": [
+    "id",
+    "version",
+    "status",
+    "name",
+    "domain",
+    "requires_runtime",
+    "permission_profile_id",
+    "domain_control_registry",
+    "supported_workflow_classes",
+    "output_contract"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9-]+$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(?:-[0-9A-Za-z.-]+)?$"
+    },
+    "status": {
+      "enum": [
+        "CONFIGURED_NOT_DEPLOYED"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "domain": {
+      "enum": [
+        "chief-of-staff",
+        "product",
+        "sales",
+        "finance",
+        "operations",
+        "strategy"
+      ]
+    },
+    "requires_runtime": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(?:-[0-9A-Za-z.-]+)?$"
+    },
+    "permission_profile_id": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9-]+$"
+    },
+    "domain_control_registry": {
+      "type": "string",
+      "minLength": 1
+    },
+    "supported_workflow_classes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "output_contract": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,12 @@
+{
+  "version": "1.0.0",
+  "status": "CONFIGURED_NOT_DEPLOYED",
+  "id": "AGENT-STRATEGY-001",
+  "name": "Strategy & Compliance",
+  "domain": "strategy",
+  "requires_runtime": "1.0.0",
+  "permission_profile_id": "PERM-STRATEGY-001",
+  "domain_control_registry": "agents/strategy/domain-controls.yaml",
+  "supported_workflow_classes": [],
+  "output_contract": "agents/strategy/outputs.yaml"
+}

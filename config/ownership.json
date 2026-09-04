@@ -1,0 +1,15 @@
+{
+  "repository_owner_role": "Founder",
+  "remote_owner": "nhatnguyenvn",
+  "visibility_required": "private",
+  "default_branch": "main",
+  "review_ownership": {
+    "runtime": "Chief of Staff / Founder",
+    "constitution": "Founder",
+    "permissions": "Founder / governance owner",
+    "agents": "Respective domain owner",
+    "workflows": "Operations",
+    "policies": "Strategy"
+  },
+  "remote_verification": "BLOCKED_AUTHENTICATION"
+}

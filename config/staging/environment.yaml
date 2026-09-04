@@ -1,0 +1,10 @@
+{
+  "id": "OPC-ENV-STAGING",
+  "version": "1.0.0",
+  "environment": "staging",
+  "database_reference": "OPC_STAGING_DATABASE",
+  "connector_reference": "OPC_STAGING_CONNECTORS",
+  "execution_enabled": false,
+  "production_action_guard": true,
+  "release_state": "NOT_DEPLOYED"
+}

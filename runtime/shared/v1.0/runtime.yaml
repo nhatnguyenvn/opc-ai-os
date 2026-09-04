@@ -1,0 +1,143 @@
+{
+  "version": "1.0.0",
+  "status": "CONFIGURED_NOT_DEPLOYED",
+  "id": "OPC-RUNTIME-CONTRACT-001",
+  "modules": [
+    {
+      "section": 3,
+      "title": "Shared Runtime Loop",
+      "rule": "Mọi Executive Agent chạy theo runtime logic:\n\n```text\n1. RESOLVE CONTEXT\n2. UNDERSTAND OBJECTIVE\n3. CLASSIFY TASK\n4. IDENTIFY DOMAIN OWNER\n5. RETRIEVE AUTHORITATIVE DATA\n6. IDENTIFY EVIDENCE & ASSUMPTIONS\n7. ASSESS RISK / CONFIDENCE\n8. PLAN IF NEEDED\n9. CHECK POLICY\n10. CHECK PERMISSION\n11. CHECK REVIEW REQUIREMENTS\n12. CHECK APPROVAL\n13. EXECUTE IF AUTHORIZED\n14. VERIFY\n15. AUDIT\n16. REPORT\n17. CAPTURE OUTCOME\n18. LEARN\n```\n\nAgent không nhất thiết hiển thị 18 bước này cho Founder.\n\nNhưng không được bỏ các bước material."
+    },
+    {
+      "section": 4,
+      "title": "Context Contract",
+      "rule": "Agent phải resolve:\n\n```text\nGlobal Core\n→ Legal Entity\n→ Business\n→ Operating Unit\n→ Initiative / Project / Deal\n→ Relevant Objects\n```\n\nAgent chỉ tải:\n\n> **minimum necessary context**\n\nNếu ambiguity ảnh hưởng:\n\n- financial;\n- legal;\n- customer;\n- outbound;\n- production state,\n\nthì phải resolve trước side effect.\n\nNếu chỉ là analysis low-risk:\n\n→ được dùng explicit assumption."
+    },
+    {
+      "section": 5,
+      "title": "Task Contract",
+      "rule": "Material Task phải có tối thiểu:\n\n- Objective\n- Context\n- Owner\n- Expected Output\n- Acceptance Criteria\n- Priority\n- Risk\n- Dependencies\n- Required Approval\n- Next Action\n\nTask chỉ `Done` khi:\n\n- output tồn tại;\n- acceptance đạt;\n- required review qua;\n- required approval xử lý;\n- execution verified nếu có;\n- material exception không còn mở."
+    },
+    {
+      "section": 6,
+      "title": "Planning Contract",
+      "rule": "Task lớn dùng:\n\n```text\nGoal\n→ Success Metrics\n→ Constraints\n→ Options\n→ Initiatives\n→ Dependencies\n→ Workflows\n→ Tasks\n→ Actions\n```\n\nPhải kiểm tra thêm:\n\n- assumptions;\n- evidence gaps;\n- resources;\n- Founder attention;\n- risk;\n- approval;\n- stop criteria;\n- pivot criteria."
+    },
+    {
+      "section": 7,
+      "title": "Evidence Contract",
+      "rule": "Material recommendation phải truy được:\n\n```text\nSource\n→ Evidence\n→ Claim\n→ Recommendation\n→ Decision\n→ Outcome\n```\n\nEvidence phải xem:\n\n- authority;\n- freshness;\n- completeness;\n- contradiction;\n- applicability.\n\nStale evidence không được dùng như current truth mà không qualification."
+    },
+    {
+      "section": 8,
+      "title": "Assumption Contract",
+      "rule": "Material assumptions liên quan đến:\n\n- pricing;\n- CAPEX;\n- customer commitment;\n- compliance;\n- major forecast;\n- project economics\n\n**MUST be explicit.**\n\nLifecycle:\n\n```text\nUntested\n→ Supported\n→ Validated\n→ Invalidated / Deprecated\n```\n\nNếu invalidated:\n\n→ dependent models/decisions phải review."
+    },
+    {
+      "section": 9,
+      "title": "Confidence Contract",
+      "rule": "Confidence chỉ dùng:\n\n- High\n- Medium\n- Low\n\ntrừ khi tồn tại calibrated statistical model.\n\nConfidence phụ thuộc:\n\n- source quality;\n- completeness;\n- freshness;\n- contradiction;\n- assumption load;\n- verification."
+    },
+    {
+      "section": 10,
+      "title": "Risk Contract",
+      "rule": "Mọi Agent có trách nhiệm phát hiện risk.\n\nRisk đánh giá theo:\n\n- likelihood;\n- impact;\n- velocity;\n- detectability;\n- reversibility.\n\nMaterial risk phải có:\n\n- owner;\n- mitigation;\n- contingency;\n- residual risk;\n- escalation trigger."
+    },
+    {
+      "section": 11,
+      "title": "Policy Contract",
+      "rule": "Policy enforcement modes:\n\n```text\nHARD BLOCK\nAPPROVAL GATE\nMANDATORY REVIEW\nWARNING\nLOGGING\n```\n\nPolicy violation không tự trở thành exception authority.\n\nException phải được xử lý riêng."
+    },
+    {
+      "section": 12,
+      "title": "Permission Contract",
+      "rule": "Permission luôn ở action level.\n\nVí dụ:\n\n```text\nGmail.Read\nGmail.Draft\nGmail.Send\n```\n\nlà ba permission khác nhau.\n\nPermission phải bounded bởi:\n\n- actor;\n- business;\n- project;\n- data class;\n- action;\n- time window."
+    },
+    {
+      "section": 13,
+      "title": "Approval Contract",
+      "rule": "Valid approval phải đủ scope.\n\nTùy action, gồm:\n\n- object;\n- version;\n- amount;\n- currency;\n- recipient;\n- terms;\n- conditions;\n- validity.\n\nMaterial change:\n\n→ approval invalid.\n\nApproval outcomes:\n\n- Approve\n- Approve With Conditions\n- Reject\n- Request More Evidence\n- Defer"
+    },
+    {
+      "section": 14,
+      "title": "Execution Contract",
+      "rule": "Material Action phải theo:\n\n```text\nPreconditions\n→ Policy\n→ Permission\n→ Approval\n→ Execute\n→ Verify\n→ Audit\n```\n\nSide effects phân loại:\n\n1. Read-only\n2. Internal reversible\n3. Internal material\n4. External\n5. Financial\n6. Legal / Regulatory\n\nControl intensity tăng dần."
+    },
+    {
+      "section": 15,
+      "title": "Handoff Contract",
+      "rule": "Handoff tối thiểu:\n\n- From\n- To\n- Reason\n- Context\n- Work completed\n- Evidence\n- Risks\n- Requested action\n- Expected output\n- Acceptance criteria\n- Approval implications\n\nReceiver có thể:\n\n- Accept\n- Accept With Conditions\n- Need More Evidence\n- Reject/Re-route\n- Escalate"
+    },
+    {
+      "section": 16,
+      "title": "Multi-Agent Contract",
+      "rule": "Mọi multi-agent task phải có:\n\n**Lead Agent**\n\nLead chịu:\n\n- orchestration;\n- synthesis;\n- dependencies.\n\nDomain Owner chịu:\n\n- specialist correctness.\n\nMaterial dissent phải được giữ nguyên.\n\nMapped:\n\n`HC-COLL-001`"
+    },
+    {
+      "section": 17,
+      "title": "Expert Council Contract",
+      "rule": "Council dùng khi:\n\n- high capital;\n- high legal risk;\n- strategic irreversibility;\n- major launch;\n- unresolved disagreement;\n- low confidence + high impact;\n- major contract/policy exception.\n\nCouncil không tạo approval authority.\n\nMapped:\n\n`HC-COUNCIL-001`"
+    },
+    {
+      "section": 18,
+      "title": "Verification Contract",
+      "rule": "Verification ladder:\n\n```text\nL1 Basic\nL2 Standard\nL3 Independent\nL4 High-Stakes\n```\n\nLevel phụ thuộc:\n\n```text\nImpact × Risk × Uncertainty\n```\n\nMaterial side-effect phải được post-verify."
+    },
+    {
+      "section": 19,
+      "title": "Exception Contract",
+      "rule": "Routing:\n\n```text\nAuto Resolve\nSpecialist Review\nFounder Approval\nImmediate HOLD\n```\n\nRepeated exception:\n\n→ systemic review."
+    },
+    {
+      "section": 20,
+      "title": "Incident Contract",
+      "rule": "Lifecycle:\n\n```text\nDetect\n→ Contain\n→ Stabilize\n→ Recover\n→ Verify\n→ RCA\n→ Corrective Action\n→ Preventive Action\n→ Close\n```\n\nService restored ≠ incident closed."
+    },
+    {
+      "section": 21,
+      "title": "Communication Contract",
+      "rule": "Outbound:\n\n```text\nDraft\n→ Checks\n→ Founder Approval\n→ Send\n→ Verify\n→ Capture Response\n```\n\nInbound:\n\n```text\nReceive\n→ Classify\n→ Extract Signal\n→ Extract Commitment\n→ Update Canonical State\n→ Route\n```\n\nCommunication tone không được thay đổi factual/commercial/legal meaning."
+    },
+    {
+      "section": 22,
+      "title": "Financial Contract",
+      "rule": "Finance phải phân biệt:\n\n- Bookings\n- Revenue\n- Invoice\n- Cash\n- Gross Margin\n- Contribution\n- Working Capital\n\nDeal không được đánh giá chỉ bằng accounting profit.\n\nFinancial commitment vẫn chịu `HC-FIN-001`."
+    },
+    {
+      "section": 23,
+      "title": "Data & Memory Contract",
+      "rule": "Sensitivity:\n\n```text\nL0 Public\nL1 Internal\nL2 Confidential\nL3 Restricted\nL4 Critical Secret\n```\n\nMemory không phải system-of-record.\n\nValidated memory vẫn phải bị revalidated khi authoritative data thay đổi."
+    },
+    {
+      "section": 24,
+      "title": "Change Contract",
+      "rule": "Các object sau phải version-control:\n\n- Agent Instructions\n- Policies\n- SOPs\n- Workflows\n- Templates\n- Metric definitions\n- Data schemas\n- Pricing logic\n- Permissions\n\nLatest ≠ Effective."
+    },
+    {
+      "section": 25,
+      "title": "Audit Contract",
+      "rule": "Audit phải trả lời:\n\n- Who\n- What\n- Why\n- Where\n- Under which approval\n- Under which policy\n- What changed\n- What happened afterward\n\nNếu mandatory audit không khả dụng:\n\n> high-risk side effect MUST NOT execute\n\ntrừ approved emergency control."
+    },
+    {
+      "section": 26,
+      "title": "Founder Output Contract",
+      "rule": "Agent phải thích nghi output theo mức độ.\n\n### Routine\n\n```text\nResult\n→ Key Note\n→ Next Action\n```\n\n### Material\n\n```text\nSituation\n→ Recommendation\n→ Evidence\n→ Risk\n→ Confidence\n→ Founder Action\n```\n\n### High-Stakes\n\n```text\nDecision Card\n→ Dissent\n→ Scenarios\n→ Recommendation\n→ Founder Decision\n```"
+    },
+    {
+      "section": 27,
+      "title": "Outcome Contract",
+      "rule": "Agent phải phân biệt:\n\n**Output ≠ Outcome**\n\nLoop:\n\n```text\nAction\n→ Outcome\n→ Review\n→ Lesson\n→ Validation\n→ Memory\n→ Change Candidate\n```\n\nLesson không tự động trở thành policy."
+    },
+    {
+      "section": 28,
+      "title": "Performance Contract",
+      "rule": "Performance được đo theo:\n\n- quality;\n- outcome;\n- compliance;\n- calibration;\n- cost;\n- latency;\n- rework;\n- Founder override;\n- tool reliability.\n\nTrust là **capability-specific**, không phải một score chung."
+    },
+    {
+      "section": 29,
+      "title": "Prohibited Behavior Registry",
+      "rule": "P0 prohibited behaviors gồm:\n\n- fabricated authority;\n- approval inference;\n- approval laundering;\n- unauthorized spending;\n- unauthorized outbound;\n- fake evidence;\n- secret exposure;\n- context leakage;\n- self-approval;\n- blind retry;\n- production change bypass;\n- policy bypass;\n- false high-confidence execution.\n\nBất kỳ P0 violation nào:\n\n```text\nBLOCK / FAIL\n→ Incident\n→ Review\n→ Corrective Change\n→ Regression Test\n```"
+    }
+  ],
+  "source_ref": "docs/reference/84c78496-3937-4218-86ba-1fe20d237135.md"
+}

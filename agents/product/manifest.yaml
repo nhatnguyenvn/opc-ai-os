@@ -1,0 +1,12 @@
+{
+  "version": "1.0.0",
+  "status": "CONFIGURED_NOT_DEPLOYED",
+  "id": "AGENT-PRODUCT-001",
+  "name": "Product & Offer",
+  "domain": "product",
+  "requires_runtime": "1.0.0",
+  "permission_profile_id": "PERM-PRODUCT-001",
+  "domain_control_registry": "agents/product/domain-controls.yaml",
+  "supported_workflow_classes": [],
+  "output_contract": "agents/product/outputs.yaml"
+}

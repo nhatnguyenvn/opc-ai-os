@@ -1,0 +1,78 @@
+{
+  "type": "object",
+  "required": [
+    "id",
+    "version",
+    "status",
+    "owner",
+    "environment",
+    "credential_reference",
+    "read_scope",
+    "write_scope",
+    "execute_scope",
+    "enabled",
+    "failure_mode"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9-]+$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(?:-[0-9A-Za-z.-]+)?$"
+    },
+    "status": {
+      "enum": [
+        "CONFIGURED_NOT_DEPLOYED"
+      ]
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "environment": {
+      "enum": [
+        "development",
+        "test",
+        "staging",
+        "production"
+      ]
+    },
+    "credential_reference": {
+      "type": "string",
+      "minLength": 1
+    },
+    "read_scope": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "write_scope": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "execute_scope": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "enabled": {
+      "const": false
+    },
+    "failure_mode": {
+      "enum": [
+        "DENY",
+        "HOLD"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,10 @@
+{
+  "version": "1.0.0",
+  "status": "CONFIGURED_NOT_DEPLOYED",
+  "id": "PERM-COS-001",
+  "agent_id": "AGENT-COS-001",
+  "default_action": "DENY",
+  "grants": [],
+  "scope": [],
+  "enabled": false
+}
