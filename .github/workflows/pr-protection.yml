@@ -1,0 +1,17 @@
+name: PR Protection Gatekeeper
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  enforce-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Out Code
+        uses: actions/checkout@v4
+
+      - name: Run Audit Checks
+        run: |
+          echo "Checking PR guidelines..."
+          # Cài đặt điều kiện kiểm tra ở đây (VD: linter, test)
