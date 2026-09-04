@@ -1,0 +1,7 @@
+{
+  "version": "1.0.0",
+  "status": "CONFIGURED_NOT_DEPLOYED",
+  "id": "AGENT-OPERATIONS-001-CONTROLS",
+  "controls": [],
+  "materialization": "PENDING_DOMAIN_TRANSCRIPTION"
+}

@@ -1,0 +1,93 @@
+{
+  "type": "object",
+  "required": [
+    "id",
+    "version",
+    "status",
+    "controls"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9-]+$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(?:-[0-9A-Za-z.-]+)?$"
+    },
+    "status": {
+      "enum": [
+        "CONFIGURED_NOT_DEPLOYED"
+      ]
+    },
+    "controls": {
+      "type": "array",
+      "minItems": 30,
+      "items": {
+        "type": "object",
+        "required": [
+          "control_id",
+          "name",
+          "severity",
+          "trigger",
+          "required_behavior",
+          "prohibited_behavior",
+          "enforcement_type",
+          "decision_table",
+          "tests",
+          "source_ref"
+        ],
+        "properties": {
+          "control_id": {
+            "type": "string",
+            "pattern": "^[A-Z][A-Z0-9-]+$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "severity": {
+            "enum": [
+              "P0",
+              "P1"
+            ]
+          },
+          "trigger": {
+            "type": "string",
+            "minLength": 1
+          },
+          "required_behavior": {
+            "type": "string",
+            "minLength": 1
+          },
+          "prohibited_behavior": {
+            "type": "string",
+            "minLength": 1
+          },
+          "enforcement_type": {
+            "const": "NOT_IMPLEMENTED"
+          },
+          "decision_table": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "tests": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "source_ref": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

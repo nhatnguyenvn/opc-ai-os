@@ -1,0 +1,10 @@
+{
+  "id": "OPC-ENV-PRODUCTION",
+  "version": "1.0.0",
+  "environment": "production",
+  "database_reference": "OPC_PROD_DATABASE",
+  "connector_reference": "OPC_PRODUCTION_CONNECTORS",
+  "execution_enabled": false,
+  "production_action_guard": true,
+  "release_state": "NOT_DEPLOYED"
+}

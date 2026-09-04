@@ -1,0 +1,10 @@
+{
+  "version": "1.0.0",
+  "status": "CONFIGURED_NOT_DEPLOYED",
+  "id": "PERM-PRODUCT-001",
+  "agent_id": "AGENT-PRODUCT-001",
+  "default_action": "DENY",
+  "grants": [],
+  "scope": [],
+  "enabled": false
+}

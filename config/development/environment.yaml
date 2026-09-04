@@ -1,0 +1,10 @@
+{
+  "id": "OPC-ENV-DEVELOPMENT",
+  "version": "1.0.0",
+  "environment": "development",
+  "database_reference": "OPC_DEV_DATABASE",
+  "connector_reference": "OPC_DEVELOPMENT_CONNECTORS",
+  "execution_enabled": false,
+  "production_action_guard": true,
+  "release_state": "NOT_DEPLOYED"
+}

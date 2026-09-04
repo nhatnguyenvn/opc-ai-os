@@ -1,0 +1,62 @@
+{
+  "agents": [
+    {
+      "id": "AGENT-COS-001",
+      "version": "1.0.0",
+      "path": "agents/chief-of-staff/manifest.yaml"
+    },
+    {
+      "id": "AGENT-PRODUCT-001",
+      "version": "1.0.0",
+      "path": "agents/product/manifest.yaml"
+    },
+    {
+      "id": "AGENT-SALES-001",
+      "version": "1.0.0",
+      "path": "agents/sales/manifest.yaml"
+    },
+    {
+      "id": "AGENT-FINANCE-001",
+      "version": "1.0.0",
+      "path": "agents/finance/manifest.yaml"
+    },
+    {
+      "id": "AGENT-OPERATIONS-001",
+      "version": "1.0.0",
+      "path": "agents/operations/manifest.yaml"
+    },
+    {
+      "id": "AGENT-STRATEGY-001",
+      "version": "1.0.0",
+      "path": "agents/strategy/manifest.yaml"
+    }
+  ],
+  "required_directories": [
+    "constitution/v1.0",
+    "runtime/shared",
+    "runtime/hard-controls",
+    "permissions",
+    "policies/enterprise",
+    "policies/domain",
+    "schemas",
+    "decision-tables",
+    "workflows",
+    "connectors",
+    "knowledge/manifests",
+    "migrations",
+    "fixtures",
+    "observability",
+    "release/manifests",
+    "release/reports",
+    "scripts",
+    "docs",
+    "tests/golden",
+    "tests/agents",
+    "tests/permissions",
+    "tests/connectors",
+    "tests/schemas",
+    "tests/decisions",
+    "tests/workflows",
+    "tests/e2e"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "CR-TEMPLATE",
+  "requested_by": null,
+  "component": null,
+  "current_version": null,
+  "proposed_change": null,
+  "reason": null,
+  "risk": null,
+  "affected_controls": [],
+  "affected_tests": [],
+  "rollback": null,
+  "approval": null,
+  "status": "DRAFT"
+}

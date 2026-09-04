@@ -1,0 +1,86 @@
+{
+  "id": "REL-OPC-AIOS-100-DEV",
+  "system_version": "1.0.0-dev",
+  "status": "TEMPLATE_NOT_DEPLOYABLE",
+  "constitution": {
+    "path": "constitution/v1.0/constitution.yaml",
+    "version": "1.0.0"
+  },
+  "runtime": {
+    "path": "runtime/shared/v1.0/runtime.yaml",
+    "version": "1.0.0"
+  },
+  "hard_controls": {
+    "path": "runtime/hard-controls/v1.0/controls.yaml",
+    "version": "1.0.0"
+  },
+  "agents": [
+    {
+      "id": "AGENT-COS-001",
+      "version": "1.0.0",
+      "path": "agents/chief-of-staff/manifest.yaml"
+    },
+    {
+      "id": "AGENT-PRODUCT-001",
+      "version": "1.0.0",
+      "path": "agents/product/manifest.yaml"
+    },
+    {
+      "id": "AGENT-SALES-001",
+      "version": "1.0.0",
+      "path": "agents/sales/manifest.yaml"
+    },
+    {
+      "id": "AGENT-FINANCE-001",
+      "version": "1.0.0",
+      "path": "agents/finance/manifest.yaml"
+    },
+    {
+      "id": "AGENT-OPERATIONS-001",
+      "version": "1.0.0",
+      "path": "agents/operations/manifest.yaml"
+    },
+    {
+      "id": "AGENT-STRATEGY-001",
+      "version": "1.0.0",
+      "path": "agents/strategy/manifest.yaml"
+    }
+  ],
+  "permission_profiles": [
+    {
+      "path": "permissions/chief-of-staff.yaml",
+      "version": "1.0.0"
+    },
+    {
+      "path": "permissions/product.yaml",
+      "version": "1.0.0"
+    },
+    {
+      "path": "permissions/sales.yaml",
+      "version": "1.0.0"
+    },
+    {
+      "path": "permissions/finance.yaml",
+      "version": "1.0.0"
+    },
+    {
+      "path": "permissions/operations.yaml",
+      "version": "1.0.0"
+    },
+    {
+      "path": "permissions/strategy.yaml",
+      "version": "1.0.0"
+    }
+  ],
+  "policies": [],
+  "schema_version": "1.0.0",
+  "decision_tables": [],
+  "workflows": [],
+  "connectors": [],
+  "regression_version": "1.0.0",
+  "deployment_environment": "development",
+  "approval_reference": null,
+  "build_commit": null,
+  "database_migration_head": null,
+  "go_live": false
+}

@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0",
+  "status": "CONFIGURED_NOT_DEPLOYED",
+  "id": "AGENT-FINANCE-001-OUTPUTS",
+  "required_fields": [
+    "result",
+    "evidence",
+    "risk",
+    "confidence",
+    "next_action"
+  ],
+  "source_ref": "docs/reference/84c78496-3937-4218-86ba-1fe20d237135.md#26-founder-output-contract"
+}

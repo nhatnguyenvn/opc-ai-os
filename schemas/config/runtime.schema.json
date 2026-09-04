@@ -1,0 +1,56 @@
+{
+  "type": "object",
+  "required": [
+    "id",
+    "version",
+    "status",
+    "modules",
+    "source_ref"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9-]+$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(?:-[0-9A-Za-z.-]+)?$"
+    },
+    "status": {
+      "enum": [
+        "CONFIGURED_NOT_DEPLOYED"
+      ]
+    },
+    "modules": {
+      "type": "array",
+      "minItems": 27,
+      "items": {
+        "type": "object",
+        "required": [
+          "section",
+          "title",
+          "rule"
+        ],
+        "properties": {
+          "section": {
+            "type": "integer"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "rule": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "source_ref": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false
+}

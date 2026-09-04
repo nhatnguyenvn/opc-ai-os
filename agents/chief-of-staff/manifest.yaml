@@ -1,0 +1,12 @@
+{
+  "version": "1.0.0",
+  "status": "CONFIGURED_NOT_DEPLOYED",
+  "id": "AGENT-COS-001",
+  "name": "AI Chief of Staff",
+  "domain": "chief-of-staff",
+  "requires_runtime": "1.0.0",
+  "permission_profile_id": "PERM-COS-001",
+  "domain_control_registry": "agents/chief-of-staff/domain-controls.yaml",
+  "supported_workflow_classes": [],
+  "output_contract": "agents/chief-of-staff/outputs.yaml"
+}

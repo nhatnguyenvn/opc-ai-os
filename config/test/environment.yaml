@@ -1,0 +1,10 @@
+{
+  "id": "OPC-ENV-TEST",
+  "version": "1.0.0",
+  "environment": "test",
+  "database_reference": "OPC_TEST_DATABASE",
+  "connector_reference": "OPC_TEST_CONNECTORS",
+  "execution_enabled": false,
+  "production_action_guard": true,
+  "release_state": "NOT_DEPLOYED"
+}

@@ -1,0 +1,9 @@
+{
+  "version": "1.0.0",
+  "status": "CONFIGURED_NOT_DEPLOYED",
+  "id": "AGENT-PRODUCT-001-BOUNDARIES",
+  "default_action": "DENY",
+  "permission_profile_id": "PERM-PRODUCT-001",
+  "authority_source": "EXPLICIT_PERMISSION_AND_VALID_APPROVAL",
+  "enabled": false
+}

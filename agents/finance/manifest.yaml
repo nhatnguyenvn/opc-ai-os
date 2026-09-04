@@ -1,0 +1,12 @@
+{
+  "version": "1.0.0",
+  "status": "CONFIGURED_NOT_DEPLOYED",
+  "id": "AGENT-FINANCE-001",
+  "name": "Finance & Control",
+  "domain": "finance",
+  "requires_runtime": "1.0.0",
+  "permission_profile_id": "PERM-FINANCE-001",
+  "domain_control_registry": "agents/finance/domain-controls.yaml",
+  "supported_workflow_classes": [],
+  "output_contract": "agents/finance/outputs.yaml"
+}
