@@ -7,7 +7,7 @@
 ### Changed
 - None.
 ### Fixed
-- None.
+- Disable automatic Git maintenance in disposable test repositories to prevent a background writer racing fixture cleanup on CI; exclude temporary clones from fixture copies.
 ### Deprecated
 - None.
 ### Removed

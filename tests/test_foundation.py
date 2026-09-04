@@ -18,8 +18,11 @@ class FoundationTests(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name) / 'repo'
-        shutil.copytree(ROOT, self.root, ignore=shutil.ignore_patterns('.git', '__pycache__', '.env', '*.pyc'))
+        shutil.copytree(ROOT, self.root, ignore=shutil.ignore_patterns('.git', '__pycache__', '.env', '*.pyc', 'tmp'))
         subprocess.run(['git', 'init', '-q', str(self.root)], check=True)
+        # Disposable repositories must not leave detached writers racing cleanup.
+        subprocess.run(['git', '-C', str(self.root), 'config', 'maintenance.auto', 'false'], check=True)
+        subprocess.run(['git', '-C', str(self.root), 'config', 'gc.auto', '0'], check=True)
 
     def change(self, path, fn):
         target = self.root / path

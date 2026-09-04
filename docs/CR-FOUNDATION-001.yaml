@@ -1,0 +1,14 @@
+{
+  "id": "CR-FOUNDATION-001",
+  "requested_by": "Technical implementation execution",
+  "component": "Phase A test fixtures",
+  "current_version": "1.0.0-dev",
+  "proposed_change": "Disable automatic Git maintenance and GC only inside disposable test repositories; exclude ignored tmp clones from fixture copying.",
+  "reason": "PR CI run 33875470638 passed validation and test assertions but failed during TemporaryDirectory cleanup with Directory not empty for repo/.git. Background maintenance is the suspected writer; fixture-local configuration prevents that race without suppressing cleanup errors.",
+  "risk": "Low; test isolation only. No runtime, permission or production configuration changes.",
+  "affected_controls": ["HC-CHG-001"],
+  "affected_tests": ["test_manifest_binds_exact_commit_without_approval", "Phase A full 19-test suite"],
+  "rollback": "Revert the fixture-only commit through PR review; retain the recorded failing run.",
+  "approval": "User authorized sequential implementation, verification and continuation; no merge or deployment approval inferred.",
+  "status": "TESTING"
+}
