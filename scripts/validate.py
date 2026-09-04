@@ -162,7 +162,10 @@ def validate(root=ROOT):
             continue
         if any(re.search(pattern, text) for pattern in patterns):
             errors.append(f'{relative}: secret pattern detected')
-        if path.suffix in ('.json', '.yaml', '.yml') and relative != '.github/workflows/validate.yml':
+        # GitHub parses workflow YAML; package configs use the JSON subset.
+        # Workflows still undergo the secret and file safety checks above.
+        workflow_yaml = Path(relative).parent.as_posix() == '.github/workflows' and path.suffix in ('.yaml', '.yml')
+        if path.suffix in ('.json', '.yaml', '.yml') and not workflow_yaml:
             load(relative)
 
     ids = {}

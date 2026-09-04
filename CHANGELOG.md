@@ -7,6 +7,7 @@
 ### Changed
 - Document A2 semantic version meanings and development-to-release progression in docs/VERSIONING.md.
 ### Fixed
+- Classify all top-level GitHub workflow YAML separately from JSON-subset package configuration; retain workflow secret scanning.
 - Disable automatic Git maintenance in disposable test repositories to prevent a background writer racing fixture cleanup on CI; exclude temporary clones from fixture copies.
 ### Deprecated
 - None.

@@ -1,0 +1,14 @@
+{
+  "id": "CR-FOUNDATION-002",
+  "requested_by": "Authorized implementation continuation",
+  "component": "Foundation config validator",
+  "current_version": "1.0.0-dev",
+  "proposed_change": "Recognize top-level GitHub workflow YAML separately from JSON-subset package configuration, while retaining secret and file safety checks.",
+  "reason": "PR run 33878673450 fails on the pr-protection.yml workflow added to main at deb4b17; branch-only CI passes.",
+  "risk": "GitHub handles workflow syntax. Package validation and workflow secret scanning remain active. The new main gatekeeper is an echo-only placeholder, not enforced branch protection.",
+  "affected_controls": ["HC-CHG-001", "HC-SEC-001"],
+  "affected_tests": ["test_additional_workflow_yaml_keeps_secret_scan", "Phase A full suite"],
+  "rollback": "Revert the classifier fix through PR review; additional workflow YAML would again fail package parsing.",
+  "approval": "User authorized implementation continuation and verification; no merge or deployment approval inferred.",
+  "status": "TESTING"
+}

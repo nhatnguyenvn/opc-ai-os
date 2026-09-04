@@ -39,6 +39,13 @@ class FoundationTests(unittest.TestCase):
     def test_baseline(self):
         self.assertEqual(validate(self.root), [])
 
+    def test_additional_workflow_yaml_keeps_secret_scan(self):
+        workflow = self.root / '.github/workflows/extra.yml'
+        workflow.write_text('name: Extra\non: pull_request\njobs: {}\n', encoding='utf-8')
+        self.assertEqual(validate(self.root), [])
+        workflow.write_text('name: ' + 'gh' + 'p_' + 'x' * 36, encoding='utf-8')
+        self.fails('secret pattern detected')
+
     def test_A_TEST_001_missing_constitution(self):
         (self.root / 'constitution/v1.0/constitution.yaml').unlink()
         self.fails('constitution/v1.0/constitution.yaml')
