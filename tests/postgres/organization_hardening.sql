@@ -32,7 +32,9 @@ BEGIN
    RAISE EXCEPTION 'scope history missing';
   END IF;
   BEGIN
-   TRUNCATE core.venture;
+   -- Include referencing tables so this reaches the anti-TRUNCATE trigger.
+   -- The trigger must reject the whole statement; no CASCADE or deletion occurs.
+   TRUNCATE core.venture, governance.venture_assumption, governance.venture_risk;
    RAISE EXCEPTION 'TRUNCATE accepted';
   EXCEPTION WHEN SQLSTATE 'P0002' THEN NULL; END;
   RAISE SQLSTATE 'ZX002';

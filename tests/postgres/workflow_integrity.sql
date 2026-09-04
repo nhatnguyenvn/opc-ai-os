@@ -10,6 +10,13 @@ BEGIN
   INSERT INTO operations.workflow(id,reference,business_id,name,owner_actor_id) VALUES(w,'DAG-W',b,'Test',a);
   INSERT INTO operations.workflow_version(id,business_id,workflow_id,version_number,definition_reference,definition_hash)
    VALUES(v,b,w,'1','fixture:dag',repeat('a',64));
+  INSERT INTO operations.workflow_definition(business_id,workflow_version_id,name,owner_actor_id,trigger_specification,
+   sla,expected_output,exception_rules,retry_rules,rollback_rules,completion_criteria,status)
+   SELECT b,id,'Fixture',a,'Manual',interval '1 hour','Result','Escalate','None','None','Verified','DRAFT'
+    FROM operations.workflow_version WHERE business_id=b;
+  INSERT INTO operations.workflow_step SELECT b,id,1,'Fixture step' FROM operations.workflow_version WHERE business_id=b;
+  INSERT INTO operations.workflow_definition_seal(business_id,workflow_version_id)
+   SELECT b,id FROM operations.workflow_version WHERE business_id=b;
   INSERT INTO operations.workflow_run(id,reference,business_id,workflow_version_id,owner_actor_id,trigger_reference)
    VALUES(r,'DAG-R',b,v,a,'fixture');
   INSERT INTO operations.task(id,reference,business_id,workflow_run_id,owner_actor_id,objective)

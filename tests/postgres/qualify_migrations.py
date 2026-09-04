@@ -57,6 +57,9 @@ def run():
         conn.execute((Path(__file__).with_name('governance_support.sql')).read_text())
         conn.execute((Path(__file__).with_name('workflow_core.sql')).read_text())
         conn.execute((Path(__file__).with_name('workflow_integrity.sql')).read_text())
+        conn.execute((Path(__file__).with_name('workflow_definition.sql')).read_text())
+        with conn.transaction():
+            conn.execute((Path(__file__).parent / 'isolation/workflow_definition.sql').read_text())
         assert conn.execute('SELECT count(*) FROM core.business').fetchone()[0] == 0
         print('PASS: clean bootstrap, upgrade, replay no-op, rollback, checksum drift, database guard')
 
