@@ -1,0 +1,4 @@
+{"migrations": [
+  "0001_namespaces.sql",
+  "0002_migration_history.json"
+]}

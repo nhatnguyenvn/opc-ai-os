@@ -1,0 +1,8 @@
+{
+  "description": "Introduce extensible history without editing the applied bootstrap ledger or migration.",
+  "statements": [
+    "CREATE TABLE audit.migration_history (migration_id text PRIMARY KEY, sha256 text NOT NULL CHECK (sha256 ~ '^[a-f0-9]{64}$'), applied_at timestamptz NOT NULL DEFAULT clock_timestamp(), applied_by text NOT NULL DEFAULT current_user)",
+    "REVOKE ALL ON audit.migration_history FROM PUBLIC",
+    "INSERT INTO audit.migration_history (migration_id, sha256, applied_at, applied_by) SELECT migration_id, sha256, applied_at, applied_by FROM audit.schema_migration"
+  ]
+}

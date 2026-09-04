@@ -1,0 +1,31 @@
+name: PostgreSQL qualification
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  migrations:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:18
+        env:
+          POSTGRES_DB: opc_ci
+          POSTGRES_USER: opc_ci
+          POSTGRES_PASSWORD: ${{ github.run_id }}
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U opc_ci -d opc_ci"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install 'psycopg[binary]==3.2.10'
+      - run: python tests/postgres/qualify_migrations.py
+        env:
+          OPC_DATABASE_TEST_URL: host=localhost port=5432 dbname=opc_ci user=opc_ci
+          PGPASSWORD: ${{ github.run_id }}
