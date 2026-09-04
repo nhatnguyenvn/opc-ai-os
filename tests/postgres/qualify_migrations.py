@@ -52,6 +52,7 @@ def run():
             raise AssertionError('Database guard accepted incorrect predecessor')
         conn.execute((Path(__file__).resolve().parents[2] / 'migrations/0001_namespaces.verify.sql').read_text())
         conn.execute((Path(__file__).with_name('organization.sql')).read_text())
+        conn.execute((Path(__file__).with_name('organization_hardening.sql')).read_text())
         assert conn.execute('SELECT count(*) FROM core.business').fetchone()[0] == 0
         print('PASS: clean bootstrap, upgrade, replay no-op, rollback, checksum drift, database guard')
 

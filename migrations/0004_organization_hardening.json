@@ -1,0 +1,32 @@
+{
+  "description": "Constrain Agent actor type, stamp initial provenance, preserve relationship changes and block organization TRUNCATE.",
+  "statements": [
+    "ALTER TABLE core.actor ADD CONSTRAINT actor_id_type_unique UNIQUE(id,actor_type)",
+    "ALTER TABLE core.agent ADD COLUMN actor_type text NOT NULL DEFAULT 'AI_AGENT' CHECK(actor_type='AI_AGENT')",
+    "ALTER TABLE core.agent ADD CONSTRAINT agent_requires_ai_actor FOREIGN KEY(actor_id,actor_type) REFERENCES core.actor(id,actor_type)",
+    "CREATE FUNCTION audit.organization_initialize() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN NEW.version:=1; NEW.created_at:=clock_timestamp(); NEW.updated_at:=NEW.created_at; NEW.created_by:=current_user; NEW.updated_by:=current_user; RETURN NEW; END $$",
+    "CREATE FUNCTION audit.reject_organization_truncate() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN RAISE EXCEPTION USING ERRCODE='P0002', MESSAGE='ARCHIVE_REQUIRED'; END $$",
+    "CREATE TABLE audit.organization_relationship_history (id bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY, relation_name text NOT NULL, operation text NOT NULL CHECK(operation IN ('INSERT','UPDATE','DELETE')), recorded_at timestamptz NOT NULL DEFAULT clock_timestamp(), database_actor text NOT NULL DEFAULT current_user, row_data jsonb NOT NULL, previous_data jsonb)",
+    "CREATE FUNCTION audit.record_organization_relationship() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN INSERT INTO audit.organization_relationship_history(relation_name,operation,row_data,previous_data) VALUES(TG_TABLE_NAME,TG_OP,CASE WHEN TG_OP='DELETE' THEN to_jsonb(OLD) ELSE to_jsonb(NEW) END,CASE WHEN TG_OP='INSERT' THEN NULL ELSE to_jsonb(OLD) END); RETURN NULL; END $$",
+    "CREATE TRIGGER relationship_history_append_only BEFORE UPDATE OR DELETE OR TRUNCATE ON audit.organization_relationship_history FOR EACH STATEMENT EXECUTE FUNCTION audit.reject_history_mutation()",
+    "REVOKE ALL ON audit.organization_relationship_history FROM PUBLIC",
+    "CREATE TRIGGER organization_initialize BEFORE INSERT ON core.actor FOR EACH ROW EXECUTE FUNCTION audit.organization_initialize()",
+    "CREATE TRIGGER organization_initialize BEFORE INSERT ON core.business FOR EACH ROW EXECUTE FUNCTION audit.organization_initialize()",
+    "CREATE TRIGGER organization_initialize BEFORE INSERT ON core.legal_entity FOR EACH ROW EXECUTE FUNCTION audit.organization_initialize()",
+    "CREATE TRIGGER organization_initialize BEFORE INSERT ON core.venture FOR EACH ROW EXECUTE FUNCTION audit.organization_initialize()",
+    "CREATE TRIGGER organization_initialize BEFORE INSERT ON core.agent FOR EACH ROW EXECUTE FUNCTION audit.organization_initialize()",
+    "CREATE TRIGGER organization_relationship_history AFTER INSERT OR UPDATE OR DELETE ON core.actor_business FOR EACH ROW EXECUTE FUNCTION audit.record_organization_relationship()",
+    "CREATE TRIGGER organization_relationship_history AFTER INSERT OR UPDATE OR DELETE ON core.agent_business FOR EACH ROW EXECUTE FUNCTION audit.record_organization_relationship()",
+    "CREATE TRIGGER organization_relationship_history AFTER INSERT OR UPDATE OR DELETE ON core.business_market FOR EACH ROW EXECUTE FUNCTION audit.record_organization_relationship()",
+    "CREATE TRIGGER organization_relationship_history AFTER INSERT OR UPDATE OR DELETE ON core.legal_entity_bank_reference FOR EACH ROW EXECUTE FUNCTION audit.record_organization_relationship()",
+    "CREATE TRIGGER organization_no_truncate BEFORE TRUNCATE ON core.actor FOR EACH STATEMENT EXECUTE FUNCTION audit.reject_organization_truncate()",
+    "CREATE TRIGGER organization_no_truncate BEFORE TRUNCATE ON core.business FOR EACH STATEMENT EXECUTE FUNCTION audit.reject_organization_truncate()",
+    "CREATE TRIGGER organization_no_truncate BEFORE TRUNCATE ON core.legal_entity FOR EACH STATEMENT EXECUTE FUNCTION audit.reject_organization_truncate()",
+    "CREATE TRIGGER organization_no_truncate BEFORE TRUNCATE ON core.venture FOR EACH STATEMENT EXECUTE FUNCTION audit.reject_organization_truncate()",
+    "CREATE TRIGGER organization_no_truncate BEFORE TRUNCATE ON core.agent FOR EACH STATEMENT EXECUTE FUNCTION audit.reject_organization_truncate()",
+    "CREATE TRIGGER organization_no_truncate BEFORE TRUNCATE ON core.actor_business FOR EACH STATEMENT EXECUTE FUNCTION audit.reject_organization_truncate()",
+    "CREATE TRIGGER organization_no_truncate BEFORE TRUNCATE ON core.agent_business FOR EACH STATEMENT EXECUTE FUNCTION audit.reject_organization_truncate()",
+    "CREATE TRIGGER organization_no_truncate BEFORE TRUNCATE ON core.business_market FOR EACH STATEMENT EXECUTE FUNCTION audit.reject_organization_truncate()",
+    "CREATE TRIGGER organization_no_truncate BEFORE TRUNCATE ON core.legal_entity_bank_reference FOR EACH STATEMENT EXECUTE FUNCTION audit.reject_organization_truncate()"
+  ]
+}
