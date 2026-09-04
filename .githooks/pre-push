@@ -1,0 +1,10 @@
+#!/bin/sh
+# Protect the remote ref regardless of local branch name or update type.
+while read -r local_ref local_sha remote_ref remote_sha
+do
+    if [ "$remote_ref" = "refs/heads/main" ]; then
+        echo "HOLD: direct updates or deletion of main prohibited; use an approved PR." >&2
+        exit 1
+    fi
+done
+exit 0

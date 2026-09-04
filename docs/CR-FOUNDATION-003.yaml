@@ -1,0 +1,17 @@
+{
+  "id": "CR-FOUNDATION-003",
+  "requested_by": "Founder: keep Free private and develop compensating controls to amend the exit gate",
+  "component": "Phase A A1.3 and exit gate item for branch protection",
+  "current_version": "OPC-BUILD-001 original approved Phase A",
+  "proposed_change": "Introduce OPC-A1-3-ALT-001 as a Founder-approved alternative to native protection, requiring seven verified compensating controls before amended-baseline PASS.",
+  "reason": "Native protection unavailable on the current GitHub Free private repository; preserve privacy and governance without claiming equivalent enforcement.",
+  "risk": "Local hooks and procedural gates can be bypassed by owner/browser/API access, other clones or no-verify. CI is not server-side prevention. Final approval must explicitly accept these limitations.",
+  "affected_controls": ["HC-CHG-001", "HC-AUTH-001", "HC-AUTH-003", "HC-AUD-001", "HC-AUD-002", "HC-SEC-001"],
+  "affected_tests": ["ALT-T01", "ALT-T02", "ALT-T03", "ALT-T04", "ALT-T05", "ALT-T06", "ALT-T07", "ALT-T08", "ALT-T09", "Phase A full foundation suite"],
+  "rollback": "Reviewed reversal of amendment or migration to verified native protection. No automatic rewrite of main; no automatic PASS on rollback.",
+  "approval": "Founder replied tiep tuc to the proposal implementation approval request; implementation authorized, qualification and merge approval remain pending.",
+  "status": "TESTING",
+  "proposal_path": "docs/A1-3-ALTERNATIVE-GATE.md",
+  "implementation_status": "IN_PROGRESS",
+  "qualification_status": "NOT_PASS"
+}

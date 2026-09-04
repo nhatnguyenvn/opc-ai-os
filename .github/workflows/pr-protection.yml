@@ -1,11 +1,11 @@
-name: PR Protection Gatekeeper
+name: PR Workflow Notice (not enforcement)
 
 on:
   pull_request:
     branches: [ main ]
 
 jobs:
-  enforce-checks:
+  informational-only:
     runs-on: ubuntu-latest
     steps:
       - name: Check Out Code
@@ -13,5 +13,5 @@ jobs:
 
       - name: Run Audit Checks
         run: |
-          echo "Checking PR guidelines..."
+          echo "Informational only. This workflow does not enforce branch protection."
           # Cài đặt điều kiện kiểm tra ở đây (VD: linter, test)
